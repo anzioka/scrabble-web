@@ -1,12 +1,25 @@
+import './index.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+import { ThemeProvider } from '@material-ui/core/styles';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import App from './App';
+import Auth0ProviderWithHistory from './auth/auth0-provider';
 import reportWebVitals from './reportWebVitals';
+import theme from './theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Auth0ProviderWithHistory>
+          <App />
+        </Auth0ProviderWithHistory>
+      </Router>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

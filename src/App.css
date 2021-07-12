@@ -1,5 +1,23 @@
 .App {
+  /* display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 30px;
+  margin: 20px; */
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.item {
+  border: 1px solid #eee;
+  padding: 20px;
   text-align: center;
+}
+.item:hover{
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .App-logo {
