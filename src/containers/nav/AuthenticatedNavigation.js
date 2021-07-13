@@ -14,8 +14,11 @@ import {
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
 
 import UserAvatar from './components/UserAvatar';
+
+import { toggleDrawer } from '../../redux/reducers/appReducer';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -53,6 +56,7 @@ const mobileMenuId = 'navbar-menu-mobile';
 
 const AuthenticatedNavigation = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [mobileMoreAnchorEl, setMobileAnchorEl] = useState(null);
 
@@ -140,6 +144,7 @@ const AuthenticatedNavigation = () => {
             edge="start"
             className={classes.menuButton}
             color="inherit"
+            onClick={() => dispatch(toggleDrawer())}
             aria-label="open drawer">
           <MenuIcon />
         </IconButton>

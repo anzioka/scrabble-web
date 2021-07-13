@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 
 import { useAuth0 } from '@auth0/auth0-react';
+import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import About from './containers/About';
@@ -14,11 +15,15 @@ import Loading from './components/loading';
 // import MobileNewGameFab from './components/MobileNewGameFab';
 import Profile from './containers/profile/Profile';
 import ScrabbleGame from './containers/ScrabbleGame';
+import SideNavigation from './containers/nav/SideNavigation';
 import UnAuthenticatedNavigation from './containers/nav/UnAuthenticatedNavigation';
 import * as Routes from './constants/routes';
+import { selectIsDrawerClosed } from './redux/reducers/appReducer';
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
+
+  const isDrawerClosed = useSelector((state) => selectIsDrawerClosed(state.app));
 
   if (isLoading) {
     return <Loading />;
@@ -37,6 +42,7 @@ function App() {
         <Route path={Routes.PROFILE} component={Profile} />
         <Redirect to={Routes.ROOT} />
       </Switch>
+      <SideNavigation open={!isDrawerClosed} />
     </div>
   );
 }

@@ -21,6 +21,8 @@ module.exports = {
     'react-hooks'
   ],
   rules: {
+    "no-param-reassign": "off",
+    "import/no-named-as-default": "off",
     'comma-dangle': 'off',
     'no-unused-vars': ["warn"],
     "import/order": [

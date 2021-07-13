@@ -4,15 +4,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { ThemeProvider } from '@material-ui/core/styles';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import App from './App';
 import Auth0ProviderWithHistory from './auth/auth0-provider';
 import reportWebVitals from './reportWebVitals';
+import store from './redux/store';
 import theme from './theme';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <ThemeProvider theme={theme}>
       <Router>
         <Auth0ProviderWithHistory>
@@ -20,7 +22,7 @@ ReactDOM.render(
         </Auth0ProviderWithHistory>
       </Router>
     </ThemeProvider>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
